@@ -98,9 +98,9 @@ class core_question_renderer extends plugin_renderer_base {
             ))
         ));
 
-        $output .= html_writer::tag('div',
-                $this->info($qa, $behaviouroutput, $qtoutput, $options, $number),
-                array('class' => 'info'));
+        //$output .= html_writer::tag('div',
+        //        $this->info($qa, $behaviouroutput, $qtoutput, $options, $number),
+        //        array('class' => 'info'));
 
         $output .= html_writer::start_tag('div', array('class' => 'content'));
 

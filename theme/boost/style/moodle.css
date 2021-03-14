@@ -15695,7 +15695,7 @@ body.path-question-type {
   vertical-align: bottom; }
 
 .que .content {
-  margin: 0 0 0 8.5em; }
+  margin: 0 0 0 0; }
 
 .que .formulation,
 .que .outcome,
