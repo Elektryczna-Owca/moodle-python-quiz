@@ -6,7 +6,7 @@ $context = context_system::instance();
 $PAGE->set_context($context);
 
 // Hardcoded URL to course with quiz.
-$url = new moodle_url('/course/view.php', ['id' => 3]);
+$url = new moodle_url('/course/view.php', ['id' => 2]);
 
 // The last pre-created user for anonymous quiz.
 // In the unlikely case that we'll hit the limit, quiz takers will need to
@@ -21,12 +21,13 @@ if (isloggedin() and !isguestuser()) {
 // Get the next user ID we can use.
 $record = $DB->get_record('config', ['name' => 'nextguestid']);
 $userid = (int) $record->value;
+
 if ($userid > $maxid) {
     throw new moodle_exception('Daily limit reached. Come back tomorrow.');
 }
 
 $record->value += 1;
-$DB->update_record($userid);
+$DB->update_record('config', $record);
 
 $user = core_user::get_user($userid, '*', MUST_EXIST);
 core_user::require_active_user($user, true, true);
