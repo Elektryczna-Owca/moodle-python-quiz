@@ -3057,6 +3057,10 @@ function require_login($courseorid = null, $autologinguest = true, $cm = null, $
     if (!WS_SERVER && !AJAX_SCRIPT) {
         user_accesstime_log($course->id);
     }
+    // Unless taking the quiz, redirect to the forced course page.
+    if (!is_siteadmin() && $PAGE->cm->modname != 'quiz') {
+        redirect(new moodle_url("/course/view.php",[id=>2]));
+    }
 }
 
 /**
